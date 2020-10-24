@@ -2,6 +2,7 @@ package pl.kopka.kursspringboot2;
 
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,10 @@ public class CarAPI {
         carList.add(new Car(5L, "Lamborghini", "Huracan", "green"));
     }
 
-    @GetMapping
+    @GetMapping(produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE
+    })
     public ResponseEntity<List<Car>> getCars() {
         return new ResponseEntity<>(carList, HttpStatus.OK);
     }

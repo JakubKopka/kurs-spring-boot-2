@@ -1,4 +1,4 @@
-package pl.kopka.kursspringboot2.tydzien2;
+package pl.kopka.kursspringboot2;
 
 
 public class Product {

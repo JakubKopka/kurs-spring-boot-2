@@ -1,4 +1,4 @@
-package pl.kopka.kursspringboot2.tydzien2;
+package pl.kopka.kursspringboot2;
 
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;

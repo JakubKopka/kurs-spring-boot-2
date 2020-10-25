@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/cars")
+@CrossOrigin
 public class CarAPI {
 
     private List<Car> carList;
@@ -28,10 +29,7 @@ public class CarAPI {
         carList.add(new Car(5L, "Lamborghini", "Huracan", "green"));
     }
 
-    @GetMapping(produces = {
-            MediaType.APPLICATION_JSON_VALUE,
-            MediaType.APPLICATION_XML_VALUE
-    })
+    @GetMapping
     public ResponseEntity<List<Car>> getCars() {
         return new ResponseEntity<>(carList, HttpStatus.OK);
     }
@@ -60,8 +58,9 @@ public class CarAPI {
 
     @PostMapping
     public ResponseEntity<?> addCar(@RequestBody Car newCar) {
-        if (this.carList.stream().filter(car -> car.getId() == newCar.getId()).findFirst().isPresent()
-                || !this.carList.add(newCar)) {
+        newCar.setId(this.carList.size()+1);
+        System.out.println(newCar);
+        if (!this.carList.add(newCar)) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         } else {
             return new ResponseEntity<>(HttpStatus.CREATED);
@@ -72,7 +71,7 @@ public class CarAPI {
     public ResponseEntity<?> modCar(@RequestBody Car newCar) {
         Optional<Car> first = this.carList.stream().filter(car -> car.getId() == newCar.getId()).findFirst();
         if (first.isPresent()) {
-            this.carList.remove(first);
+            this.carList.remove(first.get());
             this.carList.add(newCar);
             return new ResponseEntity<>(HttpStatus.OK);
         }
@@ -82,7 +81,6 @@ public class CarAPI {
     @PatchMapping("/{id}")
     public ResponseEntity<?> modFieldCar(@PathVariable long id, @RequestBody Map<String, String> changes) {
         Optional<Car> first = this.carList.stream().filter(car -> car.getId() == id).findFirst();
-
         if (first.isPresent()) {
             changes.forEach((change, value) -> {
                 switch (change) {

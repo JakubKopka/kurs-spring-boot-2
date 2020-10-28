@@ -1,4 +1,4 @@
-package pl.kopka.kursspringboot2;
+package pl.kopka.kursspringboot2.Entity;
 
 import lombok.*;
 

@@ -2,7 +2,6 @@ package pl.kopka.kursspringboot2.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.kopka.kursspringboot2.Dao.CarDao;
 import pl.kopka.kursspringboot2.Dao.CarDaoImp;
 import pl.kopka.kursspringboot2.Model.Car;
 

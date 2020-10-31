@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.kopka.kursspringboot2.Model.Car;
 import pl.kopka.kursspringboot2.Service.CarService;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @RestController

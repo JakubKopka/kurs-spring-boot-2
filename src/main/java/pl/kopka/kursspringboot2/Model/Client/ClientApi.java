@@ -1,4 +1,4 @@
-package pl.kopka.kursspringboot2.Model;
+package pl.kopka.kursspringboot2.Model.Client;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,12 +18,12 @@ import lombok.ToString;
         "page"
 })
 @ToString
-public class NewsApi {
+public class ClientApi {
 
     @JsonProperty("status")
     private String status;
     @JsonProperty("news")
-    private List<News> news = null;
+    private List<NewsApi> newsApis = null;
     @JsonProperty("page")
     private Integer page;
     @JsonIgnore
@@ -40,13 +40,13 @@ public class NewsApi {
     }
 
     @JsonProperty("news")
-    public List<News> getNews() {
-        return news;
+    public List<NewsApi> getNewsApis() {
+        return newsApis;
     }
 
     @JsonProperty("news")
-    public void setNews(List<News> news) {
-        this.news = news;
+    public void setNewsApis(List<NewsApi> newsApis) {
+        this.newsApis = newsApis;
     }
 
     @JsonProperty("page")

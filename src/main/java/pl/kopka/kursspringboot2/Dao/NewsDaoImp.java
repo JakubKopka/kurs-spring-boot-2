@@ -3,6 +3,7 @@ package pl.kopka.kursspringboot2.Dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import pl.kopka.kursspringboot2.Model.Client.NewsApi;
 import pl.kopka.kursspringboot2.Model.News;
 
 import java.util.ArrayList;
@@ -22,14 +23,20 @@ public class NewsDaoImp implements NewsDao {
 
     @Override
     public List<News> findAll() {
-        List<News> news = new ArrayList<>();
+        List<News> newsList = new ArrayList<>();
         String sql = "select * from news";
         List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql);
-//        maps.forEach(element -> cars.add(new News(Long.parseLong(element.get("id").toString()), String.valueOf(element.get("mark")),
-//                String.valueOf(element.get("model")), String.valueOf(element.get("color")), String.valueOf(element.get("production_date")))));
-//        return cars;
-        System.out.println(maps);
-        return null;
+        maps.forEach(element -> newsList.add(new News(element.get("id").toString(), String.valueOf(element.get("title")),
+                String.valueOf(element.get("description")), String.valueOf(element.get("url")), String.valueOf(element.get("author")),
+                String.valueOf(element.get("image")), String.valueOf(element.get("published")))));
+        return newsList;
+    }
+
+    @Override
+    public void save(News news) {
+        String sql = "insert into news values (?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, news.getId(), news.getTitle(), news.getDescription(),
+                news.getUrl(), news.getAuthor(), news.getImage(), news.getPublished());
     }
 
 }

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.kopka.kursspringboot2.Client.ClientController;
+import pl.kopka.kursspringboot2.Model.Client.NewsApi;
 import pl.kopka.kursspringboot2.Model.News;
 import pl.kopka.kursspringboot2.Service.NewsService;
 
@@ -28,7 +29,7 @@ public class NewsController {
 
     @GetMapping
     public ResponseEntity<List<News>> getCars() {
-        List<News> news = clientController.getNewsFormApi();
+        List<News> news = newsService.getAll();
         return new ResponseEntity<>(news, HttpStatus.OK);
     }
 

@@ -10,20 +10,28 @@ import javax.validation.constraints.NotNull;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Car {
+public class NewsOLD {
 
     @NotNull
-    private Long id;
+    private String id;
 
     @NotNull
-    private String mark;
+    private String title;
 
     @NotNull
-    private String model;
+    private String description;
 
     @NotNull
-    private String color;
+    private String url;
 
     @NotNull
-    private String productionDate;
+    private String author;
+
+    @NotNull
+    private String image;
+
+    @NotNull
+    private String published;
+
+
 }

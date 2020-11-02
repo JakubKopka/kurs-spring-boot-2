@@ -10,4 +10,7 @@ public interface NewsDao {
     List<News> findAll();
     void save(News news);
 
+    News getNewsById(String id);
+
+    boolean edit(News news);
 }

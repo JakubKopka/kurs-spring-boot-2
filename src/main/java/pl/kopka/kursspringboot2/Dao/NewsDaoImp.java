@@ -2,10 +2,13 @@ package pl.kopka.kursspringboot2.Dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import pl.kopka.kursspringboot2.Model.Client.NewsApi;
 import pl.kopka.kursspringboot2.Model.News;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +40,29 @@ public class NewsDaoImp implements NewsDao {
         String sql = "insert into news values (?, ?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, news.getId(), news.getTitle(), news.getDescription(),
                 news.getUrl(), news.getAuthor(), news.getImage(), news.getPublished());
+    }
+
+    @Override
+    public News getNewsById(String id) {
+        String sql = "select * from news where id = ?";
+        News news = jdbcTemplate.queryForObject(sql, new RowMapper<News>() {
+            @Override
+            public News mapRow(ResultSet resultSet, int i) throws SQLException {
+                return new News(resultSet.getString("id"), resultSet.getString("title"),
+                        resultSet.getString("description"), resultSet.getString("url"),
+                        resultSet.getString("author"), resultSet.getString("image"),
+                        resultSet.getString("published"));
+            }
+        }, id);
+        return news;
+    }
+
+    @Override
+    public boolean edit(News news) {
+        String sql = "update news set title=?, description=?, url=?, author=?, image=?, published=? where id=?";
+        jdbcTemplate.update(sql, news.getTitle(), news.getDescription(),
+                news.getUrl(), news.getAuthor(), news.getImage(), news.getPublished(),  news.getId() );
+        return true;
     }
 
 }

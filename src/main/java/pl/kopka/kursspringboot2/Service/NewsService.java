@@ -43,4 +43,12 @@ public class NewsService {
         }
     }
 
+    public News getNewsById(String id) {
+        return newsDaoImp.getNewsById(id);
+    }
+
+
+    public boolean editNews(News news) {
+        return newsDaoImp.edit(news);
+    }
 }

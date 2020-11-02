@@ -28,9 +28,26 @@ public class NewsController {
 
 
     @GetMapping
-    public ResponseEntity<List<News>> getCars() {
+    public ResponseEntity<List<News>> getAllNews() {
         List<News> news = newsService.getAll();
         return new ResponseEntity<>(news, HttpStatus.OK);
+    }
+
+    @GetMapping(value="/{id}")
+    public ResponseEntity<News> getNewsById(@PathVariable String id) {
+        News news = newsService.getNewsById(id);
+        return new ResponseEntity<>(news, HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity<?> editNews(@RequestBody News news){
+        System.out.println("wejscie");
+        System.out.println(news);
+        if(newsService.editNews(news)){
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
 

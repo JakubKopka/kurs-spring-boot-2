@@ -41,8 +41,6 @@ public class NewsController {
 
     @PutMapping
     public ResponseEntity<?> editNews(@RequestBody News news){
-        System.out.println("wejscie");
-        System.out.println(news);
         if(newsService.editNews(news)){
             return new ResponseEntity<>(HttpStatus.OK);
         } else {

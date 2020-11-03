@@ -16,10 +16,10 @@ public class Weather {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int temp;
+    private Double temp;
     private Double pressure;
     private Double humidity;
     private Double windSpeed;
-    private String windDirection;
+    private Double windDirection;
     private String observationTime;
 }

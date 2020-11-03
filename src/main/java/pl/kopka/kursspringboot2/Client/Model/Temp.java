@@ -19,19 +19,19 @@ import lombok.ToString;
 public class Temp {
 
     @JsonProperty("value")
-    private Integer value;
+    private Double value;
     @JsonProperty("units")
     private String units;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("value")
-    public Integer getValue() {
+    public Double getValue() {
         return value;
     }
 
     @JsonProperty("value")
-    public void setValue(Integer value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 

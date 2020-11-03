@@ -13,7 +13,7 @@ public class Mapper {
         weather.setHumidity(weatherApi.getHumidity().getValue());
         weather.setPressure(weatherApi.getBaroPressure().getValue());
         weather.setWindSpeed(weatherApi.getWindSpeed().getValue());
-        weather.setWindDirection(weatherApi.getWindDirection().getUnits());
+        weather.setWindDirection(weatherApi.getWindDirection().getValue());
         weather.setObservationTime(weatherApi.getObservationTime().getValue());
         return weather;
     }

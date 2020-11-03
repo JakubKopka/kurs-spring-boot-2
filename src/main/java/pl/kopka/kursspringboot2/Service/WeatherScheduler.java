@@ -22,8 +22,8 @@ public class WeatherScheduler {
         this.weatherService = weatherService;
     }
 
-    //    @Scheduled(cron = "0 * * * *")
-    @Scheduled(fixedDelay = 100000)
+    //    @Scheduled(fixedDelay = 10000)
+    @Scheduled(cron = "0 0 * * * *")
     private void getCurrentWeatherFromApi() {
         Weather weather = mapper.mapToWeather(apiController.getWeatherFromApi());
         weatherService.save(weather);

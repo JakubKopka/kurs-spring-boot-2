@@ -39,15 +39,16 @@ public class NoteController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addNewNote(@RequestBody Note note){
-        noteService.addNewNote(note);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<?> addNewNote(@RequestBody Note newNote){
+        Note note = noteService.addNewNote(newNote);
+        return new ResponseEntity<>(note, HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> updateNote(@PathVariable("id") Long id, @RequestBody Note note){
-        if(noteService.updateNote(id, note) != null){
-            return new ResponseEntity<>(HttpStatus.OK);
+        Note newNote = noteService.updateNote(id, note);
+        if(newNote != null){
+            return new ResponseEntity<>(newNote, HttpStatus.OK);
         }else {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
@@ -56,6 +57,6 @@ public class NoteController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deleteNote(@PathVariable("id") Long id){
         noteService.deleteNote(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 }

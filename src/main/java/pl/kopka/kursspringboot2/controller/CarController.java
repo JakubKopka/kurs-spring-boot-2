@@ -1,11 +1,11 @@
-package pl.kopka.kursspringboot2.Controller;
+package pl.kopka.kursspringboot2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.kopka.kursspringboot2.Model.Car;
-import pl.kopka.kursspringboot2.Service.CarService;
+import pl.kopka.kursspringboot2.model.Car;
+import pl.kopka.kursspringboot2.service.CarService;
 
 import java.util.List;
 
@@ -39,9 +39,8 @@ public class CarController {
     public ResponseEntity<?> addCar(@RequestBody Car newCar) {
         if (carService.addCar(newCar)) {
             return new ResponseEntity<>(HttpStatus.CREATED);
-        } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
 

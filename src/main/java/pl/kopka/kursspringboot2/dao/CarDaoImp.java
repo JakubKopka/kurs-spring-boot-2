@@ -1,9 +1,9 @@
-package pl.kopka.kursspringboot2.Dao;
+package pl.kopka.kursspringboot2.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import pl.kopka.kursspringboot2.Model.Car;
+import pl.kopka.kursspringboot2.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;

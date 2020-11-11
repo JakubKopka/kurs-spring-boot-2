@@ -1,9 +1,9 @@
-package pl.kopka.kursspringboot2.Service;
+package pl.kopka.kursspringboot2.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.kopka.kursspringboot2.Dao.CarDaoImp;
-import pl.kopka.kursspringboot2.Model.Car;
+import pl.kopka.kursspringboot2.dao.CarDaoImp;
+import pl.kopka.kursspringboot2.model.Car;
 
 import java.util.List;
 
@@ -27,8 +27,11 @@ public class CarService {
 
     public boolean addCar(Car newCar) {
         List<Car> cars = getAll();
-        System.out.println(cars.get(cars.size()-1).getId());
-        newCar.setId(cars.get(cars.size()-1).getId()+1);
+        Long id = 1L;
+        if(cars.size()>0){
+            id = cars.get(cars.size()-1).getId()+1;
+        }
+        newCar.setId(id);
         return carDaoImp.save(newCar);
     }
 }

@@ -1,6 +1,6 @@
-package pl.kopka.kursspringboot2.Dao;
+package pl.kopka.kursspringboot2.dao;
 
-import pl.kopka.kursspringboot2.Model.Car;
+import pl.kopka.kursspringboot2.model.Car;
 
 import java.util.List;
 

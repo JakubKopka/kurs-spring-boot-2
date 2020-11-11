@@ -1,4 +1,4 @@
-package pl.kopka.kursspringboot2.Client;
+package pl.kopka.kursspringboot2.client.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.http.HttpEntity;
@@ -9,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Objects;
 
 import org.springframework.stereotype.Controller;
+import pl.kopka.kursspringboot2.client.model.ExchangeRate;
 
 
 @Controller

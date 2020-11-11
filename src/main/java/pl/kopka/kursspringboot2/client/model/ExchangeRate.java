@@ -1,4 +1,4 @@
-package pl.kopka.kursspringboot2.Client;
+package pl.kopka.kursspringboot2.client.model;
 
 import java.math.BigDecimal;
 import java.util.HashMap;

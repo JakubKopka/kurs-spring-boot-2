@@ -1,8 +1,8 @@
-package pl.kopka.kursspringboot2.Repository;
+package pl.kopka.kursspringboot2.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.kopka.kursspringboot2.Model.Note;
+import pl.kopka.kursspringboot2.model.Note;
 
 @Repository
 public interface NoteRepo extends JpaRepository<Note, Long> {

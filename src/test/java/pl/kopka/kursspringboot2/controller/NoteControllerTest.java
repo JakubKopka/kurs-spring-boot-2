@@ -1,4 +1,4 @@
-package pl.kopka.kursspringboot2.Controller;
+package pl.kopka.kursspringboot2.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -10,18 +10,18 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import pl.kopka.kursspringboot2.Model.Note;
-import pl.kopka.kursspringboot2.Repository.NoteRepo;
+import pl.kopka.kursspringboot2.model.Note;
+import pl.kopka.kursspringboot2.repository.NoteRepo;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.mockito.BDDMockito.given;
 
 
 @RunWith(SpringRunner.class)

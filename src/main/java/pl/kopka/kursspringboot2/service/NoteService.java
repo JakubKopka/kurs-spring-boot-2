@@ -1,9 +1,9 @@
-package pl.kopka.kursspringboot2.Service;
+package pl.kopka.kursspringboot2.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.kopka.kursspringboot2.Model.Note;
-import pl.kopka.kursspringboot2.Repository.NoteRepo;
+import pl.kopka.kursspringboot2.model.Note;
+import pl.kopka.kursspringboot2.repository.NoteRepo;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,8 +28,12 @@ public class NoteService {
     }
 
     public Note updateNote(Long id, Note note) {
-        note.setId(id);
-        return noteRepo.save(note);
+        Optional<Note> oldNote = noteRepo.findById(id);
+        if(oldNote.isPresent()){
+            note.setId(id);
+            return noteRepo.save(note);
+        }
+        return null;
     }
 
     public void deleteNote(Long id) {

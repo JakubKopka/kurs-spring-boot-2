@@ -1,12 +1,12 @@
-package pl.kopka.kursspringboot2.Controller;
+package pl.kopka.kursspringboot2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import pl.kopka.kursspringboot2.Model.Note;
-import pl.kopka.kursspringboot2.Service.NoteService;
+import pl.kopka.kursspringboot2.model.Note;
+import pl.kopka.kursspringboot2.service.NoteService;
 
 import java.util.List;
 import java.util.Optional;
